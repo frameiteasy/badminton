@@ -1,0 +1,1 @@
+export { SimpleGoogleDriveSync } from './SimpleGoogleDriveSync';

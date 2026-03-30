@@ -1,0 +1,269 @@
+.google-drive-sync {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f0f8ff;
+  border-radius: 12px;
+  border: 2px solid #4285f4;
+}
+
+.google-drive-sync h4 {
+  margin: 0 0 15px 0;
+  color: #1a73e8;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Configuration Section */
+.config-section {
+  background-color: white;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #dadce0;
+}
+
+.config-section h5 {
+  margin: 0 0 10px 0;
+  color: #5f6368;
+}
+
+.config-help {
+  color: #5f6368;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.setup-steps {
+  font-size: 0.85rem;
+  color: #5f6368;
+  margin-bottom: 15px;
+  padding-left: 20px;
+}
+
+.setup-steps a {
+  color: #1a73e8;
+  text-decoration: none;
+}
+
+.setup-steps a:hover {
+  text-decoration: underline;
+}
+
+.config-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.input-group label {
+  font-weight: 600;
+  color: #3c4043;
+  font-size: 0.9rem;
+}
+
+.input-group input {
+  padding: 8px 12px;
+  border: 1px solid #dadce0;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: #4285f4;
+  box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.2);
+}
+
+.hide-config-btn,
+.show-config-btn {
+  background-color: #34a853;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+.hide-config-btn:hover,
+.show-config-btn:hover {
+  background-color: #2d8f47;
+}
+
+/* Status Section */
+.drive-status {
+  margin-bottom: 15px;
+}
+
+.connected-status,
+.disconnected-status {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.status-indicator {
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+.status-indicator.connected {
+  background-color: #e8f5e8;
+  color: #137333;
+  border: 1px solid #c6e6c6;
+}
+
+.status-indicator.disconnected {
+  background-color: #fef7e0;
+  color: #b45309;
+  border: 1px solid #f9c74f;
+}
+
+.sync-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: #5f6368;
+}
+
+.disconnect-btn {
+  background-color: #ea4335;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.disconnect-btn:hover {
+  background-color: #d33b2c;
+}
+
+.connect-btn {
+  background-color: #4285f4;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.connect-btn:hover:not(:disabled) {
+  background-color: #3367d6;
+  transform: translateY(-2px);
+}
+
+.connect-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Error Message */
+.error-message {
+  background-color: #fce8e6;
+  color: #c5221f;
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid #f28b82;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.clear-error-btn {
+  background: none;
+  border: none;
+  color: #c5221f;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.clear-error-btn:hover {
+  background-color: rgba(197, 34, 31, 0.1);
+}
+
+/* Drive Actions */
+.drive-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.save-btn,
+.load-btn {
+  flex: 1;
+  min-width: 150px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.save-btn {
+  background-color: #34a853;
+  color: white;
+}
+
+.save-btn:hover:not(:disabled) {
+  background-color: #2d8f47;
+  transform: translateY(-2px);
+}
+
+.load-btn {
+  background-color: #fbbc04;
+  color: #3c4043;
+}
+
+.load-btn:hover:not(:disabled) {
+  background-color: #f9ab00;
+  transform: translateY(-2px);
+}
+
+.save-btn:disabled,
+.load-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .drive-actions {
+    flex-direction: column;
+  }
+  
+  .save-btn,
+  .load-btn {
+    min-width: auto;
+  }
+  
+  .sync-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .config-inputs {
+    gap: 8px;
+  }
+}

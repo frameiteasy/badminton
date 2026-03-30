@@ -1,0 +1,361 @@
+/* Player Statistics Styles */
+.player-statistics {
+  width: 100%;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.player-statistics.empty {
+  text-align: center;
+  padding: 40px;
+  background: #fff;
+  border: 2px dashed #ddd;
+}
+
+.empty-state h3 {
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.empty-state p {
+  color: #999;
+  margin: 0;
+}
+
+/* Header */
+.statistics-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.statistics-header h3 {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 1.4rem;
+}
+
+.statistics-controls {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.filter-controls {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-filter {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #495057;
+}
+
+.checkbox-filter input {
+  margin: 0;
+}
+
+.sort-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sort-controls label {
+  font-size: 0.9rem;
+  color: #495057;
+  font-weight: 500;
+}
+
+.sort-controls select {
+  padding: 6px 10px;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  background: white;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+/* Statistics Grid */
+.statistics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+/* Player Stat Cards */
+.player-stat-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.player-stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Player Header */
+.player-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.player-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.player-name {
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 1.1rem;
+}
+
+.player-level {
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.presence-indicator {
+  font-size: 1.2rem;
+}
+
+/* Stats Content */
+.stats-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.no-games {
+  text-align: center;
+  padding: 20px;
+  color: #6c757d;
+  font-style: italic;
+}
+
+/* Primary Stats */
+.primary-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: #6c757d;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.stat-value {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+/* Record Stats */
+.record-stats {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  padding: 12px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.record-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.record-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.record-value {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.record-item.wins .record-label {
+  color: #28a745;
+}
+
+.record-item.wins .record-value {
+  color: #28a745;
+}
+
+.record-item.losses .record-label {
+  color: #dc3545;
+}
+
+.record-item.losses .record-value {
+  color: #dc3545;
+}
+
+.record-item.draws .record-label {
+  color: #6c757d;
+}
+
+.record-item.draws .record-value {
+  color: #6c757d;
+}
+
+/* Score Stats */
+.score-stats {
+  display: flex;
+  justify-content: center;
+}
+
+.score-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  background: #e9ecef;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.score-label {
+  font-size: 0.8rem;
+  color: #495057;
+  margin-bottom: 4px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.score-value {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+/* Last Game */
+.last-game {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: #fff3cd;
+  border-radius: 6px;
+  font-size: 0.85rem;
+}
+
+.last-game-label {
+  color: #856404;
+  font-weight: 500;
+}
+
+.last-game-date {
+  color: #856404;
+  font-weight: 600;
+}
+
+/* No Results */
+.no-results {
+  text-align: center;
+  padding: 40px;
+  color: #6c757d;
+  font-style: italic;
+}
+
+.no-results p {
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .statistics-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  
+  .statistics-controls {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100%;
+  }
+  
+  .filter-controls,
+  .sort-controls {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .statistics-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .primary-stats {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  
+  .record-stats {
+    gap: 12px;
+  }
+  
+  .last-game {
+    flex-direction: column;
+    gap: 4px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .player-statistics {
+    padding: 15px;
+  }
+  
+  .player-stat-card {
+    padding: 15px;
+  }
+  
+  .record-stats {
+    gap: 8px;
+  }
+  
+  .record-value {
+    font-size: 1.1rem;
+  }
+  
+  .stat-value {
+    font-size: 1.2rem;
+  }
+}

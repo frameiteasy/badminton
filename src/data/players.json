@@ -1,0 +1,122 @@
+[
+  {
+    "id": "1",
+    "name": "Konrad",
+    "level": 5,
+    "isPresent": true
+  },
+  {
+    "id": "2",
+    "name": "David O'Neill",
+    "level": 3,
+    "isPresent": false
+  },
+  {
+    "id": "3",
+    "name": "Gavin Mulcahy",
+    "level": 5,
+    "isPresent": true
+  },
+  {
+    "id": "4",
+    "name": "Isabel",
+    "level": 2,
+    "isPresent": true
+  },
+  {
+    "id": "5",
+    "name": "Grainne o'Connell",
+    "level": 2,
+    "isPresent": true
+  },
+  {
+    "id": "6",
+    "name": "Stephen Vahey",
+    "level": 5,
+    "isPresent": true
+  },
+  {
+    "id": "7",
+    "name": "John Murphy",
+    "level": 2,
+    "isPresent": false
+  },
+  {
+    "id": "8",
+    "name": "Mark",
+    "level": 3,
+    "isPresent": false
+  },
+  {
+    "id": "9",
+    "name": "Niamh Gavin",
+    "level": 3,
+    "isPresent": true
+  },
+  {
+    "id": "10",
+    "name": "Philippe",
+    "level": 4,
+    "isPresent": false
+  },
+  {
+    "id": "11",
+    "name": "Noel Cahill",
+    "level": 4,
+    "isPresent": false
+  },
+  {
+    "id": "12",
+    "name": "Mary",
+    "level": 2,
+    "isPresent": true
+  },
+  {
+    "id": "13",
+    "name": "Wojtek",
+    "level": 2,
+    "isPresent": true
+  },
+  {
+    "id": "14",
+    "name": "Conal",
+    "level": 2,
+    "isPresent": true
+  },
+  {
+    "id": "15",
+    "name": "Marina Young",
+    "level": 4,
+    "isPresent": true
+  },
+  {
+    "id": "16",
+    "name": "Aoife Rush",
+    "level": 1,
+    "isPresent": false
+  },
+  {
+    "id": "17",
+    "name": "Mary Sharkey",
+    "level": 2,
+    "isPresent": false
+  },
+    {
+    "id": "18",
+    "name": "Cal O'Driscoll",
+    "level": 3,
+    "isPresent": false
+  },
+  {
+    "id": "19",
+    "name": "JoJo",
+    "level": 2,
+    "isPresent": true
+  },
+  {
+    "id": "20",
+    "name": "Ioli",
+    "level": 1,
+    "isPresent": true
+  }
+]
