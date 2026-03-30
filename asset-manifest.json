@@ -1,0 +1,11 @@
+{
+  "files": {
+    "main.css": "/badminton/static/css/main.7e222cf9.css",
+    "main.js": "/badminton/static/js/main.37f4411c.js",
+    "index.html": "/badminton/index.html"
+  },
+  "entrypoints": [
+    "static/css/main.7e222cf9.css",
+    "static/js/main.37f4411c.js"
+  ]
+}
