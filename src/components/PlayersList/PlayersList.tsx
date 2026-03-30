@@ -7,7 +7,7 @@ interface PlayersListProps {
   players: Player[];
   onTogglePresence: (playerId: string) => void;
   onAddPlayer: (player: Omit<Player, 'id' | 'isPresent'>) => void;
-  onEditPlayer: (playerId: string, updatedData: Partial<Pick<Player, 'name' | 'level'>>) => void;
+  onEditPlayer: (playerId: string, updatedData: Partial<Pick<Player, 'name' | 'level' | 'noSingles'>>) => void;
   onDeletePlayer: (playerId: string) => void;
   onExportPlayers: () => void;
   onImportPlayers: (file: File) => Promise<void>;
@@ -32,9 +32,11 @@ export const PlayersList: React.FC<PlayersListProps> = ({
   const [isAddingPlayer, setIsAddingPlayer] = useState(false);
   const [newPlayerName, setNewPlayerName] = useState('');
   const [newPlayerLevel, setNewPlayerLevel] = useState(3);
+  const [newPlayerNoSingles, setNewPlayerNoSingles] = useState(false);
   const [editingPlayerId, setEditingPlayerId] = useState<string | null>(null);
   const [editName, setEditName] = useState('');
   const [editLevel, setEditLevel] = useState(3);
+  const [editNoSingles, setEditNoSingles] = useState(false);
   const [importError, setImportError] = useState<string | null>(null);
 
   const handleAddPlayer = (e: React.FormEvent) => {
@@ -43,9 +45,11 @@ export const PlayersList: React.FC<PlayersListProps> = ({
       onAddPlayer({
         name: newPlayerName.trim(),
         level: newPlayerLevel,
+        noSingles: newPlayerNoSingles,
       });
       setNewPlayerName('');
       setNewPlayerLevel(3);
+      setNewPlayerNoSingles(false);
       setIsAddingPlayer(false);
     }
   };
@@ -54,6 +58,7 @@ export const PlayersList: React.FC<PlayersListProps> = ({
     setEditingPlayerId(player.id);
     setEditName(player.name);
     setEditLevel(player.level);
+    setEditNoSingles(player.noSingles ?? false);
   };
 
   const handleSaveEdit = () => {
@@ -61,6 +66,7 @@ export const PlayersList: React.FC<PlayersListProps> = ({
       onEditPlayer(editingPlayerId, {
         name: editName.trim(),
         level: editLevel,
+        noSingles: editNoSingles,
       });
       handleCancelEdit();
     }
@@ -80,6 +86,7 @@ export const PlayersList: React.FC<PlayersListProps> = ({
     setEditingPlayerId(null);
     setEditName('');
     setEditLevel(3);
+    setEditNoSingles(false);
   };
 
   const handleDeletePlayer = (playerId: string, playerName: string) => {
@@ -170,6 +177,16 @@ export const PlayersList: React.FC<PlayersListProps> = ({
                     <option value={5}>5 - Expert</option>
                   </select>
                 </div>
+                <div className="edit-form-group edit-no-singles">
+                  <label>
+                    <input
+                      type="checkbox"
+                      checked={editNoSingles}
+                      onChange={(e) => setEditNoSingles(e.target.checked)}
+                    />
+                    No singles
+                  </label>
+                </div>
                 <div className="edit-actions">
                   <button
                     className="save-edit-btn"
@@ -195,6 +212,9 @@ export const PlayersList: React.FC<PlayersListProps> = ({
                   <div className="player-level">
                     Level {player.level} - {getLevelText(player.level)}
                   </div>
+                  {player.noSingles && (
+                    <div className="player-no-singles">No singles</div>
+                  )}
                 </div>
                 <div className="player-controls">
                   <label className="presence-toggle">
@@ -264,6 +284,16 @@ export const PlayersList: React.FC<PlayersListProps> = ({
                 <option value={4}>4 - Advanced</option>
                 <option value={5}>5 - Expert</option>
               </select>
+            </div>
+            <div className="form-group">
+              <label>
+                <input
+                  type="checkbox"
+                  checked={newPlayerNoSingles}
+                  onChange={(e) => setNewPlayerNoSingles(e.target.checked)}
+                />
+                {' '}No singles
+              </label>
             </div>
             <div className="form-actions">
               <button type="submit" className="save-btn">Save</button>

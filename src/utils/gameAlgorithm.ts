@@ -1,5 +1,22 @@
 import { Player, Game, SinglesGame, GameMatch, GameRound } from '../types';
 
+function pairKey(id1: string, id2: string): string {
+  return [id1, id2].sort().join('-');
+}
+
+function buildPartnerHistory(gameHistory: GameRound[]): Set<string> {
+  const pairs = new Set<string>();
+  gameHistory.slice(-5).forEach(round => {
+    round.games.forEach(game => {
+      if (game.type === 'doubles') {
+        pairs.add(pairKey(game.team1[0].id, game.team1[1].id));
+        pairs.add(pairKey(game.team2[0].id, game.team2[1].id));
+      }
+    });
+  });
+  return pairs;
+}
+
 interface TeamBalance {
   team1Total: number;
   team2Total: number;
@@ -218,9 +235,11 @@ function createSinglesGamesWithHistory(
     return a.player.level - b.player.level;
   });
 
-  const availablePlayers = finalPlayers.map(ph => ph.player);
+  // Sort by skill level so consecutive pairs have the closest possible levels
+  const availablePlayers = finalPlayers.map(ph => ph.player)
+    .sort((a, b) => a.level - b.level);
 
-  // Create pairs with balanced skill levels when possible
+  // Create pairs with balanced skill levels
   for (let i = 0; i < availablePlayers.length - 1; i += 2) {
     games.push({
       id: `singles-${Date.now()}-${courtNumber}`,
@@ -289,41 +308,54 @@ function generateTeamCombinations(players: Player[]): [Player, Player][] {
 
 /**
  * Generates all valid game combinations (no player plays against themselves)
+ * Sorted by balance first, then by number of repeated partner pairs (from history)
  */
-function generateValidGameCombinations(teams: [Player, Player][]): { team1: [Player, Player], team2: [Player, Player], balance: TeamBalance }[] {
-  const validCombinations: { team1: [Player, Player], team2: [Player, Player], balance: TeamBalance }[] = [];
-  
+function generateValidGameCombinations(
+  teams: [Player, Player][],
+  pastPartners: Set<string>
+): { team1: [Player, Player], team2: [Player, Player], balance: TeamBalance, repeatedPartnerships: number }[] {
+  const validCombinations: { team1: [Player, Player], team2: [Player, Player], balance: TeamBalance, repeatedPartnerships: number }[] = [];
+
   for (let i = 0; i < teams.length - 1; i++) {
     for (let j = i + 1; j < teams.length; j++) {
       const team1 = teams[i];
       const team2 = teams[j];
-      
+
       // Check if any player appears on both teams
       const team1Ids = [team1[0].id, team1[1].id];
       const team2Ids = [team2[0].id, team2[1].id];
       const hasOverlap = team1Ids.some(id => team2Ids.includes(id));
-      
+
       if (!hasOverlap) {
         const balance = calculateTeamBalance(team1, team2);
-        validCombinations.push({ team1, team2, balance });
+        const repeatedPartnerships =
+          (pastPartners.has(pairKey(team1[0].id, team1[1].id)) ? 1 : 0) +
+          (pastPartners.has(pairKey(team2[0].id, team2[1].id)) ? 1 : 0);
+        validCombinations.push({ team1, team2, balance, repeatedPartnerships });
       }
     }
   }
-  
-  // Sort by balance (most balanced first)
-  validCombinations.sort((a, b) => a.balance.difference - b.balance.difference);
-  
+
+  // Sort by balance first, then by repeated partnerships (prefer fresh pairings)
+  validCombinations.sort((a, b) => {
+    if (a.balance.difference !== b.balance.difference) {
+      return a.balance.difference - b.balance.difference;
+    }
+    return a.repeatedPartnerships - b.repeatedPartnerships;
+  });
+
   return validCombinations;
 }
 
 /**
  * Finds the best pairing for doubles games using improved algorithm
  */
-function findBestDoublesPairings(players: Player[]): Game[] {
+function findBestDoublesPairings(players: Player[], gameHistory: GameRound[]): Game[] {
   if (players.length < 4) return [];
-  
+
+  const pastPartners = buildPartnerHistory(gameHistory);
   const teams = generateTeamCombinations(players);
-  const validCombinations = generateValidGameCombinations(teams);
+  const validCombinations = generateValidGameCombinations(teams, pastPartners);
   const games: Game[] = [];
   const usedPlayers = new Set<string>();
   
@@ -391,8 +423,8 @@ export function generateOptimalGames(
   const playerHistory = analyzePlayerHistory(presentPlayers, gameHistory);
   const currentRoundNumber = gameHistory.length + 1;
   
-  // Generate doubles games first (unchanged logic for doubles)
-  const doublesGames = findBestDoublesPairings(shuffledPlayers);
+  // Generate doubles games first
+  const doublesGames = findBestDoublesPairings(shuffledPlayers, gameHistory);
   games.push(...doublesGames);
   
   // Find players not involved in doubles games
@@ -405,20 +437,24 @@ export function generateOptimalGames(
   });
   
   const remainingPlayers = shuffledPlayers.filter(player => !usedPlayerIds.has(player.id));
-  
+
+  // Players who prefer not to play singles wait instead
+  const singlesPlayers = remainingPlayers.filter(player => !player.noSingles);
+  const noSinglesWaiting = remainingPlayers.filter(player => player.noSingles);
+
   // Generate singles games with history awareness
   const singlesResult = createSinglesGamesWithHistory(
-    remainingPlayers, 
+    singlesPlayers,
     doublesGames.length + 1,
     playerHistory,
     currentRoundNumber
   );
-  
+
   games.push(...singlesResult.games);
-  
+
   return {
     games,
-    unpairedPlayers: singlesResult.waitingPlayers,
+    unpairedPlayers: [...singlesResult.waitingPlayers, ...noSinglesWaiting],
     totalGames: games.length,
     doublesGames: doublesGames.length,
     singlesGames: singlesResult.games.length

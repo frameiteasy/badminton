@@ -3,120 +3,140 @@
     "id": "1",
     "name": "Konrad",
     "level": 5,
-    "isPresent": true
+    "isPresent": true,
+    "noSingles": false
   },
   {
     "id": "2",
     "name": "David O'Neill",
     "level": 3,
-    "isPresent": false
+    "isPresent": false,
+    "noSingles": false
   },
   {
     "id": "3",
     "name": "Gavin Mulcahy",
     "level": 5,
-    "isPresent": true
+    "isPresent": true,
+    "noSingles": false
   },
   {
     "id": "4",
     "name": "Isabel",
     "level": 2,
-    "isPresent": true
+    "isPresent": true,
+    "noSingles": false
   },
   {
     "id": "5",
     "name": "Grainne o'Connell",
     "level": 2,
-    "isPresent": true
+    "isPresent": true,
+    "noSingles": true
   },
   {
     "id": "6",
     "name": "Stephen Vahey",
     "level": 5,
-    "isPresent": true
+    "isPresent": true,
+    "noSingles": false
   },
   {
     "id": "7",
     "name": "John Murphy",
     "level": 2,
-    "isPresent": false
+    "isPresent": false,
+    "noSingles": false
   },
   {
     "id": "8",
     "name": "Mark",
     "level": 3,
-    "isPresent": false
+    "isPresent": false,
+    "noSingles": false
   },
   {
     "id": "9",
     "name": "Niamh Gavin",
     "level": 3,
-    "isPresent": true
+    "isPresent": true,
+    "noSingles": false
   },
   {
     "id": "10",
     "name": "Philippe",
     "level": 4,
-    "isPresent": false
+    "isPresent": false,
+    "noSingles": false
   },
   {
     "id": "11",
     "name": "Noel Cahill",
     "level": 4,
-    "isPresent": false
+    "isPresent": false,
+    "noSingles": false
   },
   {
     "id": "12",
     "name": "Mary",
     "level": 2,
-    "isPresent": true
+    "isPresent": true,
+    "noSingles": false
   },
   {
     "id": "13",
     "name": "Wojtek",
     "level": 2,
-    "isPresent": true
+    "isPresent": true,
+    "noSingles": false
   },
   {
     "id": "14",
     "name": "Conal",
     "level": 2,
-    "isPresent": true
+    "isPresent": true,
+    "noSingles": false
   },
   {
     "id": "15",
     "name": "Marina Young",
     "level": 4,
-    "isPresent": true
+    "isPresent": true,
+    "noSingles": false
   },
   {
     "id": "16",
     "name": "Aoife Rush",
     "level": 1,
-    "isPresent": false
+    "isPresent": false,
+    "noSingles": false
   },
   {
     "id": "17",
     "name": "Mary Sharkey",
     "level": 2,
-    "isPresent": false
+    "isPresent": false,
+    "noSingles": false
   },
-    {
+  {
     "id": "18",
     "name": "Cal O'Driscoll",
     "level": 3,
-    "isPresent": false
+    "isPresent": false,
+    "noSingles": false
   },
   {
     "id": "19",
     "name": "JoJo",
     "level": 2,
-    "isPresent": true
+    "isPresent": true,
+    "noSingles": false
   },
   {
     "id": "20",
     "name": "Ioli",
     "level": 1,
-    "isPresent": true
+    "isPresent": true,
+    "noSingles": false
   }
 ]

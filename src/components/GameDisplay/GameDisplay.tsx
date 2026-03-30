@@ -1,6 +1,5 @@
 import React from 'react';
-import { GameMatch, Player, GameRound, GameResult } from '../../types';
-import { GameResults } from '../GameResults';
+import { GameMatch, Player, GameRound } from '../../types';
 import './GameDisplay.css';
 
 interface GameDisplayProps {
@@ -10,11 +9,6 @@ interface GameDisplayProps {
   roundNumber: number;
   timestamp: Date;
   isLatestRound: boolean;
-  // Game results props
-  gameResults: GameResult[];
-  onAddResult: (gameId: string, result: Omit<GameResult, 'gameId'>) => void;
-  onUpdateResult: (gameId: string, result: Partial<GameResult>) => void;
-  onDeleteResult: (gameId: string) => void;
 }
 
 export const GameDisplay: React.FC<GameDisplayProps> = ({
@@ -24,10 +18,6 @@ export const GameDisplay: React.FC<GameDisplayProps> = ({
   roundNumber,
   timestamp,
   isLatestRound,
-  gameResults,
-  onAddResult,
-  onUpdateResult,
-  onDeleteResult,
 }) => {
   const { games, totalGames, doublesGames, singlesGames } = gameResult;
 
@@ -252,15 +242,6 @@ export const GameDisplay: React.FC<GameDisplayProps> = ({
         </div>
       )}
 
-      {/* Game Results Section */}
-      <GameResults
-        games={games}
-        gameResults={gameResults}
-        onAddResult={onAddResult}
-        onUpdateResult={onUpdateResult}
-        onDeleteResult={onDeleteResult}
-        roundNumber={roundNumber}
-      />
     </div>
   );
 };

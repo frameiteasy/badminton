@@ -2,8 +2,7 @@ import React from 'react';
 import { PlayersList, usePlayersList } from './components/PlayersList';
 import { GameGenerator } from './components/GameGenerator';
 import { GameDisplay } from './components/GameDisplay';
-import { PlayerStatistics } from './components/PlayerStatistics';
-import { useGameHistory, useGameResults } from './hooks';
+import { useGameHistory } from './hooks';
 import './App.css';
 
 function App() {
@@ -29,13 +28,6 @@ function App() {
     handleNewArrangement,
     handleClearHistory,
   } = useGameHistory(presentPlayers);
-
-  const {
-    gameResults,
-    addGameResult,
-    updateGameResult,
-    deleteGameResult,
-  } = useGameResults();
 
   return (
     <div className="App">
@@ -92,22 +84,9 @@ function App() {
                 roundNumber={round.roundNumber}
                 timestamp={round.timestamp}
                 isLatestRound={index === gameRounds.length - 1}
-                gameResults={gameResults}
-                onAddResult={addGameResult}
-                onUpdateResult={updateGameResult}
-                onDeleteResult={deleteGameResult}
               />
             ))}
           </div>
-        )}
-
-        {/* Player Statistics */}
-        {gameResults.length > 0 && (
-          <PlayerStatistics
-            players={players}
-            gameResults={gameResults}
-            gameRounds={gameRounds}
-          />
         )}
 
         {presentPlayers.length > 0 && presentPlayers.length < 2 && (

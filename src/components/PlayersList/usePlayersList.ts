@@ -28,7 +28,7 @@ export interface UsePlayersListReturn {
   presentPlayers: Player[];
   handleTogglePresence: (playerId: string) => void;
   handleAddPlayer: (newPlayer: Omit<Player, 'id' | 'isPresent'>) => void;
-  handleEditPlayer: (playerId: string, updatedData: Partial<Pick<Player, 'name' | 'level'>>) => void;
+  handleEditPlayer: (playerId: string, updatedData: Partial<Pick<Player, 'name' | 'level' | 'noSingles'>>) => void;
   handleDeletePlayer: (playerId: string) => void;
   handleExportPlayers: () => void;
   handleImportPlayers: (file: File) => Promise<void>;
@@ -82,7 +82,7 @@ export const usePlayersList = (): UsePlayersListReturn => {
     setPlayers(prevPlayers => [...prevPlayers, player]);
   }, []);
 
-  const handleEditPlayer = useCallback((playerId: string, updatedData: Partial<Pick<Player, 'name' | 'level'>>) => {
+  const handleEditPlayer = useCallback((playerId: string, updatedData: Partial<Pick<Player, 'name' | 'level' | 'noSingles'>>) => {
     setPlayers(prevPlayers =>
       prevPlayers.map(player =>
         player.id === playerId

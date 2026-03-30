@@ -3,6 +3,7 @@ export interface Player {
   name: string;
   level: number; // 1-5 (1 = beginner, 5 = advanced)
   isPresent: boolean;
+  noSingles?: boolean;
 }
 
 export interface GameResult {
